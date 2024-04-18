@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { Movie } from './entities/movie.entity';
 import { CreateMovieDTO } from './dto/create-moive.dto';
+import { UpdateMovieDTO } from './dto/update-moive.dto';
 
 @Controller('movies')
 export class MoviesController {
@@ -29,7 +30,7 @@ export class MoviesController {
   }
   
   @Patch(':id')
-  patch(@Param('id') id: number, @Body() Data) {
+  patch(@Param('id') id: number, @Body() Data:UpdateMovieDTO) {
     return this.movieService.update(id, Data);
   }
 }
